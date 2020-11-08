@@ -9,6 +9,9 @@ interface Props {
 }
 
 const SimilarSongsCard = React.memo(function Card(props: Props) {
+  const {rowData} = props
+  const {item} =  rowData 
+  const {trackName= ''} = item
   return (
     <TouchableOpacity
       onPress={() => props.handleNavigation(props.rowData.item)}
@@ -24,7 +27,7 @@ const SimilarSongsCard = React.memo(function Card(props: Props) {
         numberOfLines={1}
         style={
           styles.title
-        }>{`${props.rowData.item?.trackName?.toUpperCase()}`}</Text>
+        }>{`${trackName.toUpperCase()}`}</Text>
     </TouchableOpacity>
   );
 });

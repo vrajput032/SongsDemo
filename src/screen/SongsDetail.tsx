@@ -20,31 +20,34 @@ interface Props extends GenericNavigationProps {
   songsList: Array<any>;
 }
 
-const AlbumDetail = (props: Props) => {
+const AlbumDetail = (props: any) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackInfo, setTrackInfo] = useState<any>({});
   const [isPlayerInitialize, setPlayerInitialize] = useState(false);
-  const params: any = props.route?.params?.album;
+  const {route } = props;
+  const {params} = route;
+  const {album} = params;
 
 
   useEffect(() => {
-    setTrackInfo(params);
-    console.log({ params });
+    setTrackInfo(album);
+    console.log('vinay',props)
+    console.log({ album });
     return () => {
       TrackPlayer.stop();
       TrackPlayer.destroy();
     };
-  }, [params.previewUrl]);
+  }, [album.previewUrl]);
 
   function playMusic() {
-    if (trackInfo?.previewUrl) {
+    if (trackInfo.previewUrl) {
       TrackPlayer.setupPlayer().then(async () => {
         // Adds a track to the queue
         await TrackPlayer.add({
           id: trackInfo.trackId,
           url: trackInfo.previewUrl,
-          title: trackInfo?.trackName,
-          artist: trackInfo?.artistName,
+          title: trackInfo.trackName,
+          artist: trackInfo.artistName,
           //artwork: require('track.png'),
         });
 
@@ -64,12 +67,13 @@ const AlbumDetail = (props: Props) => {
     TrackPlayer.play();
   }
   async function changeTrack(item: any) {
+    debugger
     await setTrackInfo(item);
     await TrackPlayer.add({
       id: item.trackId,
       url: item.previewUrl,
-      title: item?.trackName,
-      artist: item?.artistName,
+      title: item.trackName,
+      artist: item.artistName,
     });
 
     setTimeout(() => {
@@ -84,13 +88,13 @@ const AlbumDetail = (props: Props) => {
             source={{
               uri:
                 parser(trackInfo.artworkUrl100, 'source/300x300') ||
-                parser(params?.artworkUrl100, 'source/300x300'),
+                parser(album.artworkUrl100, 'source/300x300'),
             }}
           />
         </View>
       </View>
       <View style={styles.detailContainer}>
-        <Text style={styles.heading}>{trackInfo?.trackName}</Text>
+        <Text style={styles.heading}>{trackInfo.trackName}</Text>
         <TouchableOpacity style={styles.play} onPress={playMusic}>
           <Text style={styles.playText}>Play</Text>
         </TouchableOpacity>
@@ -104,8 +108,8 @@ const AlbumDetail = (props: Props) => {
       />
       {isPlayerInitialize && (
         <Track
-          trackName={trackInfo?.trackName}
-          previewUrl={trackInfo?.previewUrl}
+          trackName={trackInfo.trackName}
+          previewUrl={trackInfo.previewUrl}
           resumeMusic={resumeMusic}
           stopMusic={stopMusic}
           isPlaying={isPlaying}

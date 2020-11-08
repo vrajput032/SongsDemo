@@ -38,8 +38,6 @@ exports[`Songs Card Component Songs snapshot: GP Card snap 1`] = `
         "marginTop": 15,
       }
     }
-  >
-    undefined
-  </Text>
+  />
 </ForwardRef>
 `;

@@ -1,21 +1,7 @@
 import React from 'react';
-import NativeModules from 'react-native'
 import { shallow } from 'enzyme';
 import SongsCard from '../component/SongsCard';
 
-// jest.mock('NativeModules', () => ({
-//   UIManager: {
-//     RCTView: () => {},
-//   },
-//   RNGestureHandlerModule: {
-//     attachGestureHandler: jest.fn(),
-//     createGestureHandler: jest.fn(),
-//     dropGestureHandler: jest.fn(),
-//     updateGestureHandler: jest.fn(),
-//     State: {},
-//     Directions: {},
-//   },
-// }))
 
 const findByTestAttr = (component: any, attr: any) => {
   const wrapper = component.find(`[data-test='${attr}']`);
