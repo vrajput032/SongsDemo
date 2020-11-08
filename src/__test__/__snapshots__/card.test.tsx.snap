@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Songs Card Component Songs snapshot: GP Card snap 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "borderRadius": 5,
+      "marginHorizontal": 5,
+      "marginVertical": 15,
+      "width": 345,
+    }
+  }
+>
+  <Image
+    data-test="Album-card-component"
+    source={
+      Object {
+        "uri": undefined,
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 15,
+        "height": 300,
+        "width": 300,
+      }
+    }
+  />
+  <Text
+    numberOfLines={1}
+    style={
+      Object {
+        "alignSelf": "center",
+        "color": "white",
+        "fontSize": 32,
+        "fontWeight": "bold",
+        "marginTop": 15,
+      }
+    }
+  >
+    undefined
+  </Text>
+</ForwardRef>
+`;

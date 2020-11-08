@@ -10,7 +10,12 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "react": "16.13.1",
+    "react-dom": "^17.0.1",
     "react-native": "0.63.3",
     "react-native-track-player": "^1.2.3"
   },
@@ -55,6 +60,11 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "jest-enzyme",
+       "testEnvironment": "enzyme",
+       "testEnvironmentOptions": {
+           "enzymeAdapter": "react16"
+       }  
   }
 }
